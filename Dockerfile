@@ -1,6 +1,6 @@
 FROM tomcat:latest
 
-LABEL maintainer="Nidhi Gupta"
+LABEL maintainer="CICD-using-docker"
 
 ADD ./target/LoginWebApp-1.war /usr/local/tomcat/webapps/
 
