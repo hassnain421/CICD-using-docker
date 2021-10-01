@@ -25,7 +25,7 @@ pipeline {
            steps {
               
                 sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp CICDusingdocker/samplewebapp:latest'
+                sh 'docker tag samplewebapp hassnain421/cicd-using-docker:latest'
           }
         }
      
@@ -33,7 +33,7 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-          sh  'docker push CICDusingdocker/samplewebapp:latest'
+          sh  'docker push hassnain421/cicd-using-docker:latest'
         }
                   
           }
@@ -43,14 +43,14 @@ pipeline {
              
             steps 
 			{
-                sh "docker run -d -p 8003:8080 CICDusingdocker/samplewebapp:latest"
+                sh "docker run -d -p 8003:8080 hassnain421/samplewebapp:latest"
  
             }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://root@167.71.110.22 run -d -p 8003:8080 CICDusingdocker/samplewebapp:latest"
+                sh "docker -H ssh://root@167.71.110.22 run -d -p 8003:8080 hassnain421/samplewebapp:latest"
  
             }
         }
