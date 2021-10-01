@@ -25,7 +25,7 @@ pipeline {
            steps {
               
                 sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp hassnain421/cicd-using-docker:latest'
+                sh 'docker tag samplewebapp hassnain421/samplewebapp:latest'
           }
         }
      
@@ -33,7 +33,7 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-          sh  'docker push hassnain421/cicd-using-docker:latest'
+          sh  'docker push hassnain421/samplewebapp:latest'
         }
                   
           }
